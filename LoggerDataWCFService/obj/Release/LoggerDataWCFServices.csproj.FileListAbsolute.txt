@@ -1,0 +1,7 @@
+D:\project\viwater_QuangTri\LoggerDataWCFService\bin\LoggerDataWCFServices.dll.config
+D:\project\viwater_QuangTri\LoggerDataWCFService\bin\LoggerDataWCFServices.dll
+D:\project\viwater_QuangTri\LoggerDataWCFService\bin\LoggerDataWCFServices.pdb
+D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Release\LoggerDataWCFServices.csproj.CoreCompileInputs.cache
+D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Release\LoggerDataWCFServices.dll
+D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Release\LoggerDataWCFServices.pdb
+D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Release\LoggerDataWCFServices.csproj.AssemblyReference.cache
