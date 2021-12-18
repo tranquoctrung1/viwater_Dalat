@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tanhoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="t_Channel_Configurations">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+    </Key>
+    <Property Name="ChannelId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoggerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChannelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Pressure1" Type="Boolean" />
+    <Property Name="Pressure2" Type="Boolean" />
+    <Property Name="ForwardFlow" Type="Boolean" />
+    <Property Name="ReverseFlow" Type="Boolean" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="LastValue" Type="Double" />
+    <Property Name="IndexTimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="LastIndex" Type="Double" />
+    <Property Name="DisplayOnLabel" Type="Boolean" />
+    <Property Name="ChannelOther" Type="Boolean" />
+    <Property Name="basemin" Type="Double" />
+    <Property Name="basemax" Type="Double" />
+    <Property Name="GroupChannel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOnGraph" Type="Boolean" />
+    <Property Name="Baseline" Type="Double" />
+    <Property Name="StatusViewAlarm" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="t_HistoryPushNotification">
+    <Key>
+      <PropertyRef Name="siteid" />
+      <PropertyRef Name="loggerid" />
+      <PropertyRef Name="channelid" />
+    </Key>
+    <Property Name="siteid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="loggerid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="channelid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="value" Type="Double" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="t_Sites">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SiteAliasName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Double" />
+    <Property Name="Longitude" Type="Double" />
+    <Property Name="DisplayGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Zoom" Type="Byte" />
+    <Property Name="ConsumerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoggerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartDay" Type="Byte" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TransmitterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoggerSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MeterDateChanged" Type="DateTime" Precision="3" />
+    <Property Name="TransmitterDateChanged" Type="DateTime" Precision="3" />
+    <Property Name="LoggerDateChanged" Type="DateTime" Precision="3" />
+    <Property Name="Availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Staffs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LabelAnchorX" Type="Int32" />
+    <Property Name="LabelAnchorY" Type="Int32" />
+    <Property Name="LabelLat" Type="Double" />
+    <Property Name="LabelLng" Type="Double" />
+    <Property Name="PipeSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SetDelayTime" Type="Int32" />
+    <Property Name="SetDiffValue" Type="Double" />
+    <Property Name="Baseline" Type="Double" />
+    <Property Name="DMA_In" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DMA_Out" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DisplayOnGraph" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="tanhoaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" />
+    <EntitySet Name="t_HistoryPushNotification" EntityType="Self.t_HistoryPushNotification" />
+    <EntitySet Name="t_Sites" EntityType="Self.t_Sites" />
+  </EntityContainer>
+</Schema>

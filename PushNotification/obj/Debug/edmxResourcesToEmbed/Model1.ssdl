@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tanhoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_Channel_Configurations">
+    <Key>
+      <PropertyRef Name="ChannelId" />
+    </Key>
+    <Property Name="ChannelId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+    <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Pressure1" Type="bit" />
+    <Property Name="Pressure2" Type="bit" />
+    <Property Name="ForwardFlow" Type="bit" />
+    <Property Name="ReverseFlow" Type="bit" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="LastValue" Type="float" />
+    <Property Name="IndexTimeStamp" Type="datetime" />
+    <Property Name="LastIndex" Type="float" />
+    <Property Name="DisplayOnLabel" Type="bit" />
+    <Property Name="ChannelOther" Type="bit" />
+    <Property Name="basemin" Type="float" />
+    <Property Name="basemax" Type="float" />
+    <Property Name="GroupChannel" Type="nvarchar" MaxLength="250" />
+    <Property Name="DisplayOnGraph" Type="bit" />
+    <Property Name="Baseline" Type="float" />
+    <Property Name="StatusViewAlarm" Type="bit" />
+  </EntityType>
+  <EntityType Name="t_HistoryPushNotification">
+    <Key>
+      <PropertyRef Name="siteid" />
+      <PropertyRef Name="loggerid" />
+      <PropertyRef Name="channelid" />
+    </Key>
+    <Property Name="siteid" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="loggerid" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="channelid" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="value" Type="float" />
+    <Property Name="timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_Sites">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SiteAliasName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Location" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Latitude" Type="float" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="DisplayGroup" Type="varchar" MaxLength="50" />
+    <Property Name="Zoom" Type="tinyint" />
+    <Property Name="ConsumerId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+    <Property Name="StartDay" Type="tinyint" />
+    <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="MeterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="TransmitterSerial" Type="varchar" MaxLength="50" />
+    <Property Name="LoggerSerial" Type="varchar" MaxLength="50" />
+    <Property Name="MeterDateChanged" Type="datetime" />
+    <Property Name="TransmitterDateChanged" Type="datetime" />
+    <Property Name="LoggerDateChanged" Type="datetime" />
+    <Property Name="Availability" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Staffs" Type="varchar(max)" />
+    <Property Name="LabelAnchorX" Type="int" />
+    <Property Name="LabelAnchorY" Type="int" />
+    <Property Name="LabelLat" Type="float" />
+    <Property Name="LabelLng" Type="float" />
+    <Property Name="PipeSize" Type="nvarchar" MaxLength="50" />
+    <Property Name="SetDelayTime" Type="int" />
+    <Property Name="SetDiffValue" Type="float" />
+    <Property Name="Baseline" Type="float" />
+    <Property Name="DMA_In" Type="varchar" MaxLength="50" />
+    <Property Name="DMA_Out" Type="varchar" MaxLength="50" />
+    <Property Name="DisplayOnGraph" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="tanhoaModelStoreContainer">
+    <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_HistoryPushNotification" EntityType="Self.t_HistoryPushNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Sites" EntityType="Self.t_Sites" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

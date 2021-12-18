@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tanhoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_Channel_Configurations">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="ChannelId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+          <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Pressure1" Type="bit" />
+          <Property Name="Pressure2" Type="bit" />
+          <Property Name="ForwardFlow" Type="bit" />
+          <Property Name="ReverseFlow" Type="bit" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="LastValue" Type="float" />
+          <Property Name="IndexTimeStamp" Type="datetime" />
+          <Property Name="LastIndex" Type="float" />
+          <Property Name="DisplayOnLabel" Type="bit" />
+          <Property Name="ChannelOther" Type="bit" />
+          <Property Name="basemin" Type="float" />
+          <Property Name="basemax" Type="float" />
+          <Property Name="GroupChannel" Type="nvarchar" MaxLength="250" />
+          <Property Name="DisplayOnGraph" Type="bit" />
+          <Property Name="Baseline" Type="float" />
+          <Property Name="StatusViewAlarm" Type="bit" />
+        </EntityType>
+        <EntityType Name="t_HistoryPushNotification">
+          <Key>
+            <PropertyRef Name="siteid" />
+            <PropertyRef Name="loggerid" />
+            <PropertyRef Name="channelid" />
+          </Key>
+          <Property Name="siteid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="loggerid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="channelid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="value" Type="float" />
+          <Property Name="timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="t_Sites">
+          <Key>
+            <PropertyRef Name="SiteId" />
+          </Key>
+          <Property Name="SiteId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SiteAliasName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Location" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="DisplayGroup" Type="varchar" MaxLength="50" />
+          <Property Name="Zoom" Type="tinyint" />
+          <Property Name="ConsumerId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoggerId" Type="varchar" MaxLength="50" />
+          <Property Name="StartDay" Type="tinyint" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="MeterSerial" Type="varchar" MaxLength="50" />
+          <Property Name="TransmitterSerial" Type="varchar" MaxLength="50" />
+          <Property Name="LoggerSerial" Type="varchar" MaxLength="50" />
+          <Property Name="MeterDateChanged" Type="datetime" />
+          <Property Name="TransmitterDateChanged" Type="datetime" />
+          <Property Name="LoggerDateChanged" Type="datetime" />
+          <Property Name="Availability" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Staffs" Type="varchar(max)" />
+          <Property Name="LabelAnchorX" Type="int" />
+          <Property Name="LabelAnchorY" Type="int" />
+          <Property Name="LabelLat" Type="float" />
+          <Property Name="LabelLng" Type="float" />
+          <Property Name="PipeSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="SetDelayTime" Type="int" />
+          <Property Name="SetDiffValue" Type="float" />
+          <Property Name="Baseline" Type="float" />
+          <Property Name="DMA_In" Type="varchar" MaxLength="50" />
+          <Property Name="DMA_Out" Type="varchar" MaxLength="50" />
+          <Property Name="DisplayOnGraph" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="tanhoaModelStoreContainer">
+          <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_HistoryPushNotification" EntityType="Self.t_HistoryPushNotification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Sites" EntityType="Self.t_Sites" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tanhoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_Channel_Configurations">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="ChannelId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoggerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChannelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Pressure1" Type="Boolean" />
+          <Property Name="Pressure2" Type="Boolean" />
+          <Property Name="ForwardFlow" Type="Boolean" />
+          <Property Name="ReverseFlow" Type="Boolean" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="LastValue" Type="Double" />
+          <Property Name="IndexTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="LastIndex" Type="Double" />
+          <Property Name="DisplayOnLabel" Type="Boolean" />
+          <Property Name="ChannelOther" Type="Boolean" />
+          <Property Name="basemin" Type="Double" />
+          <Property Name="basemax" Type="Double" />
+          <Property Name="GroupChannel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOnGraph" Type="Boolean" />
+          <Property Name="Baseline" Type="Double" />
+          <Property Name="StatusViewAlarm" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="t_HistoryPushNotification">
+          <Key>
+            <PropertyRef Name="siteid" />
+            <PropertyRef Name="loggerid" />
+            <PropertyRef Name="channelid" />
+          </Key>
+          <Property Name="siteid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="loggerid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="channelid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="value" Type="Double" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="t_Sites">
+          <Key>
+            <PropertyRef Name="SiteId" />
+          </Key>
+          <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteAliasName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="DisplayGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zoom" Type="Byte" />
+          <Property Name="ConsumerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoggerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartDay" Type="Byte" />
+          <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MeterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransmitterSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoggerSerial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MeterDateChanged" Type="DateTime" Precision="3" />
+          <Property Name="TransmitterDateChanged" Type="DateTime" Precision="3" />
+          <Property Name="LoggerDateChanged" Type="DateTime" Precision="3" />
+          <Property Name="Availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Staffs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LabelAnchorX" Type="Int32" />
+          <Property Name="LabelAnchorY" Type="Int32" />
+          <Property Name="LabelLat" Type="Double" />
+          <Property Name="LabelLng" Type="Double" />
+          <Property Name="PipeSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SetDelayTime" Type="Int32" />
+          <Property Name="SetDiffValue" Type="Double" />
+          <Property Name="Baseline" Type="Double" />
+          <Property Name="DMA_In" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DMA_Out" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOnGraph" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="tanhoaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_Channel_Configurations" EntityType="Self.t_Channel_Configurations" />
+          <EntitySet Name="t_HistoryPushNotification" EntityType="Self.t_HistoryPushNotification" />
+          <EntitySet Name="t_Sites" EntityType="Self.t_Sites" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tanhoaModelStoreContainer" CdmEntityContainer="tanhoaEntities">
+          <EntitySetMapping Name="t_Channel_Configurations">
+            <EntityTypeMapping TypeName="tanhoaModel.t_Channel_Configurations">
+              <MappingFragment StoreEntitySet="t_Channel_Configurations">
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+                <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Pressure1" ColumnName="Pressure1" />
+                <ScalarProperty Name="Pressure2" ColumnName="Pressure2" />
+                <ScalarProperty Name="ForwardFlow" ColumnName="ForwardFlow" />
+                <ScalarProperty Name="ReverseFlow" ColumnName="ReverseFlow" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="LastValue" ColumnName="LastValue" />
+                <ScalarProperty Name="IndexTimeStamp" ColumnName="IndexTimeStamp" />
+                <ScalarProperty Name="LastIndex" ColumnName="LastIndex" />
+                <ScalarProperty Name="DisplayOnLabel" ColumnName="DisplayOnLabel" />
+                <ScalarProperty Name="ChannelOther" ColumnName="ChannelOther" />
+                <ScalarProperty Name="basemin" ColumnName="basemin" />
+                <ScalarProperty Name="basemax" ColumnName="basemax" />
+                <ScalarProperty Name="GroupChannel" ColumnName="GroupChannel" />
+                <ScalarProperty Name="DisplayOnGraph" ColumnName="DisplayOnGraph" />
+                <ScalarProperty Name="Baseline" ColumnName="Baseline" />
+                <ScalarProperty Name="StatusViewAlarm" ColumnName="StatusViewAlarm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_HistoryPushNotification">
+            <EntityTypeMapping TypeName="tanhoaModel.t_HistoryPushNotification">
+              <MappingFragment StoreEntitySet="t_HistoryPushNotification">
+                <ScalarProperty Name="siteid" ColumnName="siteid" />
+                <ScalarProperty Name="loggerid" ColumnName="loggerid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Sites">
+            <EntityTypeMapping TypeName="tanhoaModel.t_Sites">
+              <MappingFragment StoreEntitySet="t_Sites">
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="SiteAliasName" ColumnName="SiteAliasName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="DisplayGroup" ColumnName="DisplayGroup" />
+                <ScalarProperty Name="Zoom" ColumnName="Zoom" />
+                <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+                <ScalarProperty Name="LoggerId" ColumnName="LoggerId" />
+                <ScalarProperty Name="StartDay" ColumnName="StartDay" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MeterSerial" ColumnName="MeterSerial" />
+                <ScalarProperty Name="TransmitterSerial" ColumnName="TransmitterSerial" />
+                <ScalarProperty Name="LoggerSerial" ColumnName="LoggerSerial" />
+                <ScalarProperty Name="MeterDateChanged" ColumnName="MeterDateChanged" />
+                <ScalarProperty Name="TransmitterDateChanged" ColumnName="TransmitterDateChanged" />
+                <ScalarProperty Name="LoggerDateChanged" ColumnName="LoggerDateChanged" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Staffs" ColumnName="Staffs" />
+                <ScalarProperty Name="LabelAnchorX" ColumnName="LabelAnchorX" />
+                <ScalarProperty Name="LabelAnchorY" ColumnName="LabelAnchorY" />
+                <ScalarProperty Name="LabelLat" ColumnName="LabelLat" />
+                <ScalarProperty Name="LabelLng" ColumnName="LabelLng" />
+                <ScalarProperty Name="PipeSize" ColumnName="PipeSize" />
+                <ScalarProperty Name="SetDelayTime" ColumnName="SetDelayTime" />
+                <ScalarProperty Name="SetDiffValue" ColumnName="SetDiffValue" />
+                <ScalarProperty Name="Baseline" ColumnName="Baseline" />
+                <ScalarProperty Name="DMA_In" ColumnName="DMA_In" />
+                <ScalarProperty Name="DMA_Out" ColumnName="DMA_Out" />
+                <ScalarProperty Name="DisplayOnGraph" ColumnName="DisplayOnGraph" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
