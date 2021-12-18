@@ -941,7 +941,7 @@
                                                 text: 'Zoom out',
                                                 callback: zoomOut
                                             }]
-                                        }).setView([16.819128, 107.105069], 14);
+                                        }).setView([11.905556, 108.435908], 14);
 
                                         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHJhbnF1b2N0cnVuZyIsImEiOiJja2J6eTA1bXQxZTY4MnVudGxtM3BjMzI4In0.c0ylnh0g8KaZ83XlK_qGqw', {
                                             attribution: '<a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
@@ -1184,11 +1184,16 @@
                                                             dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + c.ChannelName + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + val + ' (' + c.Unit + ')' + '</span></td></tr>';
                                                         }
                                                     });
+                                                    dInfoHtml += "<tr><td><a href=\"#\"\">Chỉ số tổng</a></td>"
+                                                        + "<td>" + `${tempDate}` + "</td>"
+                                                        + '<td style="text-align:right;font-weight:bold;color:blue">' + Math.round(Math.abs(index)) + "</td>"
+                                                        + '<td style="font-weight:bold;color:blue">' + "m3" + "</td></tr>";
                                                     dInfoHtml += "<tr><td><a href=\"#\"\">Sản Lượng</a></td>"
                                                         + "<td>" + `${tempDate}` + "</td>"
                                                         + '<td style="text-align:right;font-weight:bold;color:blue">' + valueIndex.data.GetValueIndexByLoggerIdResult + "</td>"
                                                         + '<td style="font-weight:bold;color:blue">' + "m3" + "</td></tr>";
-                                                    dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Sản Lượng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + valueIndex.data.GetValueIndexByLoggerIdResult + ' (' +"m3" +')' + '</span></td></tr>';
+                                                    dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Chỉ số tổng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + Math.round(Math.abs(index)) + ' (' + "m3" + ')' + '</span></td></tr>';
+                                                    dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Sản Lượng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + valueIndex.data.GetValueIndexByLoggerIdResult + ' (' + "m3" + ')' + '</span></td></tr>';
                                                     labelHtml += dLabelHtml;
                                                     infoHtml += '<span style="font-weight:bold;color:blue;">' + Math.round(Math.abs(index)) + '</span></span>';
                                                     infoHtml += '<br/><table cellpadding="5" cellspacing="5">';
@@ -1462,10 +1467,15 @@
                                                         dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + c.ChannelName + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + val + ' (' + c.Unit + ')' + '</span></td></tr>';
                                                     }
                                                 });
+                                                dInfoHtml += "<tr><td><a href=\"#\"\">Chỉ số tổng</a></td>"
+                                                    + "<td>" + `${tempDate}` + "</td>"
+                                                    + '<td style="text-align:right;font-weight:bold;color:blue">' + Math.round(Math.abs(index)) + "</td>"
+                                                    + '<td style="font-weight:bold;color:blue">' + "m3" + "</td></tr>";
                                                 dInfoHtml += "<tr><td><a href=\"#\"\">Sản Lượng</a></td>"
                                                     + "<td>" + `${tempDate}` + "</td>"
                                                     + '<td style="text-align:right;font-weight:bold;color:blue">' + valueIndex.data.GetValueIndexByLoggerIdResult + "</td>"
                                                     + '<td style="font-weight:bold;color:blue">' + "m3" + "</td></tr>";
+                                                dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Chỉ số tổng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + Math.round(Math.abs(index)) + ' (' + "m3" + ')' + '</span></td></tr>';
                                                 dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Sản Lượng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + valueIndex.data.GetValueIndexByLoggerIdResult + ' (' + "m3" + ')' + '</span></td></tr>';
                                                 labelHtml += dLabelHtml;
                                                 infoHtml += '<span style="font-weight:bold;color:blue;">' + Math.round(Math.abs(index)) + '</span></span>';

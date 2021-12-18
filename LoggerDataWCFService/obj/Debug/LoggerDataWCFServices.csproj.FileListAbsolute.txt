@@ -4,3 +4,9 @@ D:\project\viwater_QuangTri\LoggerDataWCFService\bin\LoggerDataWCFServices.pdb
 D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.csproj.CoreCompileInputs.cache
 D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.dll
 D:\project\viwater_QuangTri\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.pdb
+D:\project\viwater_Dat Lat\LoggerDataWCFService\bin\LoggerDataWCFServices.dll.config
+D:\project\viwater_Dat Lat\LoggerDataWCFService\bin\LoggerDataWCFServices.dll
+D:\project\viwater_Dat Lat\LoggerDataWCFService\bin\LoggerDataWCFServices.pdb
+D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.csproj.CoreCompileInputs.cache
+D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.dll
+D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.pdb
