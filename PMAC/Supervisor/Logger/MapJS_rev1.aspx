@@ -1571,7 +1571,6 @@
                                                 dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Chỉ số tổng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + Math.round(Math.abs(index)) + ' (' + "m3" + ')' + '</span></td></tr>';
                                                 dLabelHtml += '<tr style="background-color:black"><td style="text-align:center;font-weight:bold;color:yellow; padding: 2px; border: none">' + "Sản Lượng" + '</td><td style="text-align:center;font-weight:bold;color:yellow;  padding: 2px; border: none"><span>' + valueIndex.data.GetValueIndexByLoggerIdResult + ' (' + "m3" + ')' + '</span></td></tr>';
                                                 labelHtml += dLabelHtml;
-                                                labelHtml += dLabelHtml;
                                                 infoHtml += '<span style="font-weight:bold;color:blue;">' + Math.round(Math.abs(index)) + '</span></span>';
                                                 infoHtml += '<br/><table cellpadding="5" cellspacing="5">';
                                                 infoHtml += dInfoHtml;

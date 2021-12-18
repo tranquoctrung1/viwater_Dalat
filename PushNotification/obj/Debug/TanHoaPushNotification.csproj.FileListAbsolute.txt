@@ -22,3 +22,15 @@ D:\project\viwater_QuangTri\PushNotification\obj\Debug\TanHoaPushNotification.cs
 D:\project\viwater_QuangTri\PushNotification\obj\Debug\QuangTriPushNotification.exe
 D:\project\viwater_QuangTri\PushNotification\obj\Debug\QuangTriPushNotification.pdb
 D:\project\viwater_QuangTri\PushNotification\obj\Debug\TanHoaPushNotification.csproj.AssemblyReference.cache
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\DalatPushNotification.exe.config
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\DalatPushNotification.exe
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\DalatPushNotification.pdb
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\EntityFramework.dll
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\EntityFramework.xml
+D:\project\viwater_Dat Lat\PushNotification\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\viwater_Dat Lat\PushNotification\obj\Debug\TanHoaPushNotification.csproj.AssemblyReference.cache
+D:\project\viwater_Dat Lat\PushNotification\obj\Debug\TanHoaPushNotification.csproj.CoreCompileInputs.cache
+D:\project\viwater_Dat Lat\PushNotification\obj\Debug\TanHoaPushNotification.csproj.CopyComplete
+D:\project\viwater_Dat Lat\PushNotification\obj\Debug\DalatPushNotification.exe
+D:\project\viwater_Dat Lat\PushNotification\obj\Debug\DalatPushNotification.pdb

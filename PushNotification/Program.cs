@@ -167,7 +167,7 @@ namespace TanHoaPushNotification
                                     lastValue = channel.LastValue;
                                     t.@value = new double?(lastValue.GetValueOrDefault());
                                 }
-                                t.type = "Gữi trể dữ liệu";
+                                t.type = "Gửi trể dữ liệu";
                                 isAlarm = true;
                             }
                         }
@@ -319,7 +319,7 @@ namespace TanHoaPushNotification
                                         baseline = channel.LastValue;
                                         t.@value = new double?(baseline.GetValueOrDefault());
                                     }
-                                    t.type = "Gữi trể dữ liệu";
+                                    t.type = "Gửi trể dữ liệu";
                                     isAlarm = true;
                                 }
                             }
