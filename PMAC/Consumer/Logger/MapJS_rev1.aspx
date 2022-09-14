@@ -630,7 +630,9 @@
                                     </div>
                                     <div id="chart_canvas" style="width: 100%; height: 90%"></div>
 
+                                    <div id="table_data"  style="width: 100%; height: 90%">
 
+                                    </div> 
 
                                 </ContentTemplate>
                             </telerik:RadWindow>
@@ -1856,8 +1858,6 @@
                                                 end = toOADate(end);
                                                 start = start.toString().replace('.', '_');
                                                 end = end.toString().replace('.', '_');
-                                                console.log(start);
-                                                console.log(end);
                                                 var channel = { id: channelId, namePath: namePath, unit: unit };
                                                 channels = [];
                                                 channels.push(channel);
@@ -1881,8 +1881,6 @@
                                                 end = toOADate(end);
                                                 start = start.toString().replace('.', '_');
                                                 end = end.toString().replace('.', '_');
-                                                console.log(start);
-                                                console.log(end);
                                                 var channel = { id: channelId, namePath: namePath, unit: unit };
                                                 channels = [];
                                                 channels.push(channel);
@@ -1915,14 +1913,19 @@
                                         var url = urlGetChannelData + channel.id + "/" + start + "/" + end;
                                         $.getJSON(url, function (d) {
                                             chartData = [];
+                                            let chartDataForTable = [];
                                             $.each(d.GetChannelDataResult, function (i, val) {
                                                 var parsedDate = new Date(parseInt(val.Timestamp.substr(6)));
                                                 var jsDate = new Date(parsedDate);
                                                 chartData.push({
                                                     Timestamp: jsDate
                                                 });
+                                                chartDataForTable.push({
+                                                    Timestamp: jsDate
+                                                });
                                                 if (val.Value != null && val.Value != 'undefined')
                                                     chartData[i]["'" + channel.id + "'"] = val.Value;
+                                                chartDataForTable[i]["'" + channel.id + "'"] = val.Value;
                                             });
                                             //SERIAL CHART
                                             chart = new AmCharts.AmSerialChart();
@@ -2049,8 +2052,143 @@
                                             }
                                             // WRITE
                                             chart.write("chart_canvas");
+
+                                            drawTable(chartDataForTable);
                                         });
                                     };
+
+                                    function drawTable(data) {
+                                        let table_data = document.getElementById('table_data');
+
+                                        table_data.innerHTML = "";
+
+                                        if (data.length > 0) {
+                                            let header = "";
+                                            let body = "";
+
+                                            header += `<th>Thời Gian</th>`
+                                            for (let channel of channels) {
+                                                header += `<th>${channel.namePath.split('|')[1]}</th>`;
+                                            }
+
+                                            for (let i = 0; i < data.length; i++) {
+
+                                                body += `<tr>`;
+                                                for (let pro in data[i]) {
+                                                    if (pro == "Timestamp") {
+                                                        body += `<td>${convertDateToString(data[i][pro])}</td>`;
+                                                    } else {
+                                                        body += `<td>${(data[i][pro] == null || data[i][pro] == undefined) ? "" : data[i][pro]}</td>`;
+                                                    }
+                                                }
+                                                body += `</tr>`;
+
+                                            }
+
+                                            table_data.innerHTML = `<table class="table table-bordered dataTable no-footer" id="dataTable2" cellspacing="0" style="width: 100%;overflow-y:auto" role="grid" aria-describedby="dataTable_info"> 
+                                                                    <thead style="background: #3498db; color: white"> ${header} 
+                                                                    </thead> 
+                                                                    <tbody>  ${body} 
+                                                                    </tbody> 
+                                                                    <tfoot>${header}</tfoot>
+                                                                    </table > `;
+
+                                            var cDtStart = $find("<%=radDateTimePickerStart.ClientID %>");
+                                            var cDtEnd = $find("<%=radDateTimePickerEnd.ClientID %>");
+
+                                            $("#dataTable2").DataTable({
+                                                pageLength: 10,
+                                                order: [[0, "desc"]],
+                                                initComplete: function () {
+                                                    this.api()
+                                                        .columns([0])
+                                                        .every(function () {
+                                                            var column = this;
+                                                            var select = $('<select><option value=""></option></select>')
+                                                                .appendTo($(column.footer()).empty())
+                                                                .on("change", function () {
+                                                                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                                                    column
+                                                                        .search(val ? "^" + val + "$" : "", true, false)
+                                                                        .draw();
+                                                                });
+                                                            column
+                                                                .data()
+                                                                .unique()
+                                                                .sort()
+                                                                .each(function (d, j) {
+                                                                    select.append(
+                                                                        '<option value="' + d + '">' + d + "</option>"
+                                                                    );
+                                                                });
+                                                        });
+                                                },
+                                                dom: "Bfrtip",
+                                                buttons: [
+                                                    {
+                                                        extend: "excelHtml5",
+                                                        title: `Bang Chi Tiet Tu ${convertDateToStringToExport(cDtStart.get_selectedDate())} Den ${convertDateToStringToExport(cDtEnd.get_selectedDate())}`,
+                                                    },
+                                                    {
+                                                        extend: "csvHtml5",
+                                                        title: `Bang Chi Tiet Tu ${convertDateToStringToExport(cDtStart.get_selectedDate())} Den ${convertDateToStringToExport(cDtEnd.get_selectedDate())}`,
+                                                    },
+                                                    {
+                                                        extend: "pdfHtml5",
+                                                        title: `Bang Chi Tiet Tu ${convertDateToStringToExport(cDtStart.get_selectedDate())} Den ${convertDateToStringToExport(cDtEnd.get_selectedDate())}`,
+                                                    },
+                                                ],
+                                            });
+                                        }
+                                    }
+
+                                    function convertDateToStringToExport(date) {
+                                        if (
+                                            date != null &&
+                                            date != undefined &&
+                                            date.toString().trim() != "" &&
+                                            date != "NO DATA"
+                                        ) {
+                                            let year = date.getFullYear();
+                                            let month =
+                                                date.getMonth() + 1 >= 10
+                                                    ? date.getMonth() + 1
+                                                    : `0${date.getMonth() + 1}`;
+                                            let day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`;
+                                            let hours = date.getHours() >= 10 ? date.getHours() : `0${date.getHours()}`;
+                                            let minute =
+                                                date.getMinutes() >= 10 ? date.getMinutes() : `0${date.getMinutes()}`;
+                                            let second =
+                                                date.getSeconds() >= 10 ? date.getSeconds() : `0${date.getSeconds()}`;
+
+                                            return `${day}_${month}_${year}_${hours}:${minute}`;
+                                        }
+                                        return "NO DATA";
+                                    }
+
+                                    function convertDateToString(date) {
+                                        if (
+                                            date != null &&
+                                            date != undefined &&
+                                            date.toString().trim() != "" &&
+                                            date != "NO DATA"
+                                        ) {
+                                            let year = date.getFullYear();
+                                            let month =
+                                                date.getMonth() + 1 >= 10
+                                                    ? date.getMonth() + 1
+                                                    : `0${date.getMonth() + 1}`;
+                                            let day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`;
+                                            let hours = date.getHours() >= 10 ? date.getHours() : `0${date.getHours()}`;
+                                            let minute =
+                                                date.getMinutes() >= 10 ? date.getMinutes() : `0${date.getMinutes()}`;
+                                            let second =
+                                                date.getSeconds() >= 10 ? date.getSeconds() : `0${date.getSeconds()}`;
+
+                                            return `${day}/${month}/${year} ${hours}:${minute}:${second}`;
+                                        }
+                                        return "NO DATA";
+                                    }
 
                                     function FillDisplayGroup() {
                                         let siteFilterOption = document.getElementById('site-filter-option');
@@ -2280,6 +2418,8 @@
                                         //alert(url);
                                         $.getJSON(url, function (d) {
                                             chartData = [];
+
+                                            let chartDataForTable = [];
                                             $.each(d.GetMultipleChannelsDataResult, function (i, val) {
                                                 var parsedDate = new Date(parseInt(val.Timestamp.substr(6)));
                                                 var jsDate = new Date(parsedDate);
@@ -2287,10 +2427,14 @@
                                                 chartData.push({
                                                     Timestamp: jsDate
                                                 });
+                                                chartDataForTable.push({
+                                                    Timestamp: jsDate
+                                                });
 
                                                 for (var j = 0; j < channels.length; j++) {
                                                     if (val.Values[j] != null && val.Values[j] != 'undefined')
                                                         chartData[i]["'" + channels[j].id + "'"] = val.Values[j];
+                                                    chartDataForTable[i]["'" + channels[j].id + "'"] = val.Values[j];
                                                 }
                                             });
 
@@ -2383,6 +2527,8 @@
                                             chart.dataProvider = chartData;
                                             chart.validateData();
                                             chart.validateNow();
+
+                                            drawTable(chartDataForTable);
 
                         <%--var tableView = $find("<%= grvTable.ClientID %>").get_masterTableView();
                         tableView.set_dataSource(chartData);

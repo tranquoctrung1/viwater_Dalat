@@ -10,3 +10,4 @@ D:\project\viwater_Dat Lat\LoggerDataWCFService\bin\LoggerDataWCFServices.pdb
 D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.csproj.CoreCompileInputs.cache
 D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.dll
 D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.pdb
+D:\project\viwater_Dat Lat\LoggerDataWCFService\obj\Debug\LoggerDataWCFServices.csproj.AssemblyReference.cache
