@@ -945,7 +945,7 @@
                                             }]
                                         }).setView([11.905556, 108.435908], 14);
 
-                                        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHJhbnF1b2N0cnVuZyIsImEiOiJja2J6eTA1bXQxZTY4MnVudGxtM3BjMzI4In0.c0ylnh0g8KaZ83XlK_qGqw', {
+                                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                                             attribution: '<a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
                                             maxZoom: 18,
                                         }).addTo(map);
